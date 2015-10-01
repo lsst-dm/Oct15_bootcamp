@@ -1,2 +1,2 @@
-# Oct16_bootcamp
-Repository to hold code for the October 16 DM bootcamp
+# Oct15_bootcamp
+Repository to hold code for the October 2015 DM bootcamp
