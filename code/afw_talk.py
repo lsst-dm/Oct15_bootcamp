@@ -63,6 +63,7 @@ for x, y in zip(x_positions, y_positions):
         print "Why didn't this work?\nIt's because Psf.computeImage() returns an ImageD. "\
               "You can't add an ImageD and an ImageF.  They have to be the same type.\n\n"
         psf_im = psf_im.convertF()
+        subim += psf_im
 
 back_im = afwImage.ImageF(im.getBBox())
 afwMath.randomPoissonImage(back_im, rand, 1000)
