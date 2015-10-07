@@ -74,7 +74,7 @@ fs = afwDetect.FootprintSet(masked_im, threshold, 'DETECTED')
 display.mtv(masked_im)
 display.frame = display.incrDefaultFrame()
 display.setMaskTransparency(50, None) # Set the mask transparency
-print "Wait a second.  Why is everything detected?\nGOTCHA 3: We need to subtract the background.\n\n"
+print("Wait a second.  Why is everything detected?\nGOTCHA 5: We need to subtract the background.")
 
 bctrl = afwMath.BackgroundControl(11, 11)
 bkgd = afwMath.makeBackground(masked_im, bctrl)
