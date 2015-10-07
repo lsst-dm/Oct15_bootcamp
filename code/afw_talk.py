@@ -62,7 +62,8 @@ back_im = afwImage.ImageF(im.getBBox())
 afwMath.randomPoissonImage(back_im, rand, 1000)
 im += back_im
 display.mtv(im)
-display.incrDefaultFrame()
+display.frame = display.incrDefaultFrame()
+display.setMaskTransparency(50, None) # Set the mask transparency
 
 mask = afwImage.MaskU(im.getBBox())
 masked_im = afwImage.MaskedImageF(im, mask, im)
@@ -70,7 +71,8 @@ masked_im = afwImage.MaskedImageF(im, mask, im)
 threshold = afwDetect.createThreshold(5., 'stdev')
 fs = afwDetect.FootprintSet(masked_im, threshold, 'DETECTED')
 display.mtv(masked_im)
-display.incrDefaultFrame()
+display.frame = display.incrDefaultFrame()
+display.setMaskTransparency(50, None) # Set the mask transparency
 print "Wait a second.  Why is everything detected?\nGOTCHA 3: We need to subtract the background.\n\n"
 
 bctrl = afwMath.BackgroundControl(11, 11)
@@ -80,7 +82,8 @@ masked_im -= bkgd.getImageF()
 masked_im.getMask().set(0) # reset mask
 fs = afwDetect.FootprintSet(masked_im, threshold, 'DETECTED')
 display.mtv(masked_im)
-display.incrDefaultFrame()
+display.frame = display.incrDefaultFrame()
+display.setMaskTransparency(50, None) # Set the mask transparency
 
 # other features and gotchas
 
@@ -112,7 +115,8 @@ sub_arr = subim.getArray()
 sub_arr[:][:] = im_arr.max()
 
 display.mtv(masked_im)
-display.incrDefaultFrame()
+display.frame = display.incrDefaultFrame()
+display.setMaskTransparency(50, None) # Set the mask transparency
 
 # The >>= operator
 left_box = afwGeom.BoxI(afwGeom.PointI(0,0), afwGeom.ExtentI(1000, 2048))
@@ -128,4 +132,3 @@ new_subim = afwImage.ImageF(new_im, right_box, afwImage.LOCAL)
 new_subim <<= right_subim
 
 display.mtv(new_im)
-display.incrDefaultFrame()
